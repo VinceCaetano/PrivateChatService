@@ -16,14 +16,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Fetch user from the database
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
-        // Convert User entity to Spring Security's UserDetails
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
-                .password(user.getSecurityCodeHash()) // This should be the hashed password
+                .password(user.getSecurityCodeHash()) 
                 .roles("USER") // Add roles as needed
                 .build();
     }
