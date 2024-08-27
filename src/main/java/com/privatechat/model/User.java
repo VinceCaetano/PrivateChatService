@@ -13,19 +13,13 @@ public class User {
     private Long id;
 
     private String username;
-    private String securityCodeHash; // This should be the hashed password
+    private String securityCodeHash; 
 
-    // Default constructor
-    public User() {
-    }
-
-    // Constructor with parameters
     public User(String username, String securityCodeHash) {
         this.username = username;
         this.securityCodeHash = securityCodeHash;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
